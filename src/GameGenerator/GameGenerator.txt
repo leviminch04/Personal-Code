@@ -1,1 +1,7 @@
-askjdghsaj
+Genre
+Character
+World
+Plot
+Goal
+Enemy
+

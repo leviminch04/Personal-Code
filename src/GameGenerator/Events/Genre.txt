@@ -1,0 +1,7 @@
+Horror
+RPG
+MMO
+Action
+Adventure
+Simulation
+test
