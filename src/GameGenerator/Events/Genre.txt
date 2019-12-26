@@ -4,3 +4,9 @@ MMO
 Action
 Adventure
 Simulation
+Battle Royale
+Action-adventure
+Role-playing
+Adventure
+Racing
+Real-time strategy

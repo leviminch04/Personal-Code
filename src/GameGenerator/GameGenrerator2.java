@@ -8,7 +8,7 @@ public class GameGenrerator2
 {
     public static void main(String[] args) throws IOException {
         int count = 0;
-        Reader reader = new FileReader("C:\\Users\\levim\\Documents\\GitHub\\Personal-Code\\src\\GameGenerator\\Events\\Genre.txt");
+        Reader reader = new FileReader("/Users/levi/Desktop/Genre.txt ");
         BufferedReader bufferedReader = new BufferedReader(reader);
         String line = bufferedReader.readLine();
         List genre = new ArrayList();
