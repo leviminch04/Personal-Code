@@ -7,12 +7,13 @@ import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import java.awt.*;
 import java.io.IOException;
+import javafx.scene.Group;
 
 public class GameGeneratorGui extends Application
 {
     GameGenerator3 gen = new GameGenerator3();
     GridPane gridPane = new GridPane();
-    TextArea textWall = new TextArea();
+    Label textWall = new Label("");
     Font font = new Font(20);
 
     public GameGeneratorGui() throws IOException { }
@@ -25,10 +26,10 @@ public class GameGeneratorGui extends Application
     @Override
     public void start(Stage stage) throws IOException
     {
-        textWall.setEditable(false);
-        textWall.setFont(font);
+        Button button = new Button("");
 
-        gridPane.add(textWall,0,0);
+        textWall.setFont(font);
+        gridPane.add(button, 0,1);
         
         Scene scene = new Scene(gridPane, 500, 100);
         stage.setTitle("Plot Generator");
