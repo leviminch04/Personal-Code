@@ -35,7 +35,7 @@ public class GameGeneratorGui extends Application
         gridPane.add(button, 0,1);
         
         Scene scene = new Scene(gridPane, 500, 100);
-        stage.setTitle("Plot Generator");1
+        stage.setTitle("Plot Generator");
         stage.setScene(scene);
         stage.show();
     }
