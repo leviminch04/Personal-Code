@@ -14,6 +14,7 @@ public class GameGenerator3
     int countGenre = 0;
     int countChar = 0;
     int countWorld = 0;
+    int countGoal = 0;
     Reader readerGenre = new FileReader("C:\\Users\\levim\\Documents\\GitHub\\Personal-Code\\src\\GameGenerator\\Events\\Genre.txt");
     BufferedReader bufferedReaderGenre = new BufferedReader(readerGenre);
     String lineGenre = bufferedReaderGenre.readLine();
@@ -23,15 +24,20 @@ public class GameGenerator3
     BufferedReader bufferedReaderChar = new BufferedReader(readerChar);
     String lineChar = bufferedReaderChar.readLine();
     List charA = new ArrayList();
-    String charAString;
 
     Reader readerWorld = new FileReader("C:\\Users\\levim\\Documents\\GitHub\\Personal-Code\\src\\GameGenerator\\Events\\World.txt");
     BufferedReader bufferedReaderWorld = new BufferedReader(readerWorld);
     String lineWorld = bufferedReaderWorld.readLine();
     List world = new ArrayList();
-    String worldString;
+
+    Reader readerGoal = new FileReader("C:\\Users\\levim\\Documents\\GitHub\\Personal-Code\\src\\GameGenerator\\Events\\Goal.txt");
+    BufferedReader bufferedReaderGoal = new BufferedReader(readerGoal);
+    String lineGoal = bufferedReaderGoal.readLine();
+    List goal = new ArrayList();
+    String goalString;
 
     int rand;
+    String replaceStr;
     String store;
 
 
@@ -54,28 +60,45 @@ public class GameGenerator3
             countWorld ++;
             lineWorld = bufferedReaderWorld.readLine();
         }
+
+        while(lineGoal != null)
+        {
+            goal.add(lineGoal);
+            countGoal ++;
+            lineGoal = bufferedReaderGoal.readLine();
+        }
     }
 
     public String genre() throws IOException
     {
         rand = (int) (Math.random() * genre.size());
-        return (String) genre.get(rand);
+        replaceStr = (String) genre.get(rand);
+        genre.remove(rand);
+        return replaceStr;
     }
 
     public String charA() throws IOException
     {
         rand = (int) (Math.random() * charA.size());
-        charAString = (String) charA.get(rand);
+        replaceStr = (String) charA.get(rand);
         charA.remove(rand);
-        return charAString;
+        return replaceStr;
     }
 
     public String world() throws IOException
     {
         rand = (int) (Math.random() * world.size());
-        worldString = (String) world.get(rand);
+        replaceStr = (String) world.get(rand);
         world.remove(rand);
-        return worldString;
+        return replaceStr;
+    }
+
+    public String goal() throws IOException
+    {
+        rand = (int) (Math.random() * goal.size());
+        replaceStr = (String) goal.get(rand);
+        goal.remove(rand);
+        return replaceStr;
     }
 
     public int genreSize() throws IOException
@@ -91,6 +114,17 @@ public class GameGenerator3
     public int worldSize() throws IOException
     {
         return world.size();
+    }
+
+    public String randomGen() throws IOException
+    {
+        rand = 1;
+        if (rand==1)
+        {
+            store = "A " + genre() + " game where you " + goal() + " and try not to die from " + charA();
+        }
+
+        return store;
     }
 
 

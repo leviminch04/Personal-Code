@@ -11,9 +11,6 @@ public class GameGeneratorClient
     public static void main(String[] args) throws IOException
     {
         GameGenerator3 gen = new GameGenerator3();
-        System.out.println(gen.worldSize());
-        System.out.println(gen.world());
-        System.out.println(gen.worldSize());
-
+        System.out.println(gen.randomGen());
     }
 }
