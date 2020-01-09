@@ -1,0 +1,12 @@
+Sun
+Mercury
+Venus
+Earth
+Moon
+Mars
+Jupiter
+Saturn
+Titan(moon)
+Uranus
+Neptune
+Distant Planet

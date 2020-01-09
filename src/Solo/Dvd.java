@@ -33,12 +33,5 @@ public class Dvd extends Application {
 
     }
 
-    public static class runThing
-    {
-        while(true)
-        {
-
-        }
-    }
 
 }
