@@ -21,10 +21,8 @@ public class Dvd extends Application {
     Rectangle r = new Rectangle();
     int height = 500;
     int width = 800;
-    int changeX = 10;
     int rWidth2 = 50;
     int rHeight2 = 50;
-    Button button = new Button("Start");
     int rHeight = (int) (Math.random()*(height - rHeight2)+ 1);
     int rWidth = (int) (Math.random()*(width - rWidth2) + 1);
     String directionX = "right";
@@ -41,16 +39,22 @@ public class Dvd extends Application {
         Timeline time = new Timeline();
         time.setCycleCount(Timeline.INDEFINITE);
         time.getKeyFrames().add(
-                new KeyFrame(Duration.seconds(.01), event -> {
+                new KeyFrame(Duration.seconds((double) 1 / 200), event -> {
                         if (r.getX() >= width ){
                             directionX = "left";
                         }
 
-                        if (r.getY() >= height ){
+                        if (r.getY() >= height){
                             directionY = "down";
                         }
 
+                        if (r.getY() <= 0){
+                            directionY = "up";
+                        }
 
+                        if (r.getX()  <= 0){
+                            directionX = "right";
+                        }
 
                         if (directionX.equals("right")) {
                             r.setX(r.getX() + 1);
@@ -77,45 +81,10 @@ public class Dvd extends Application {
 
 //        time.stop();
 
-        Group root = new Group(r, button);
+        Group root = new Group(r);
         Scene scene = new Scene(root, width, height);
         stage.setScene(scene);
         stage.show();
 
     }
-    /*
-    private void buttonPress(ActionEvent actionEvent) {
-        //button.setVisible(false);
-        animation();
-
-    }
-    private void animation() {
-        while(true) {
-            if (directionX.equals("right")) {
-                r.setX(r.getX() + 1);
-            }
-
-            if(directionY.equals("up"))
-            {
-                r.setY(r.getY() + 1);
-            }
-
-            if (r.getX() >= width ){
-                directionX = "left";
-            }
-
-            if (r.getY() >= height ){
-                directionY = "down";
-            }
-
-            if (directionX.equals("left")) {
-                r.setX(r.getX() - 1);
-            }
-
-            if (directionY.equals("down")) {
-                r.setY(r.getY() - 1);
-            }
-        }
-    }*/
-
 }
