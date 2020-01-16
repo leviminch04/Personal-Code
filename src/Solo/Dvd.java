@@ -1,5 +1,7 @@
 package Solo;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
@@ -7,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.Group;
+import javafx.util.Duration;
 
 
 public class Dvd extends Application {
@@ -29,12 +32,50 @@ public class Dvd extends Application {
     @Override
     public void start(Stage stage)
     {
-        button.setOnAction(this::buttonPress);
 
         r.setX(rWidth);
         r.setY(rHeight);
         r.setWidth(rWidth2);
         r.setHeight(rHeight2);
+
+        Timeline time = new Timeline();
+        time.setCycleCount(Timeline.INDEFINITE);
+        time.getKeyFrames().add(
+                new KeyFrame(Duration.seconds(.01), event -> {
+                        if (r.getX() >= width ){
+                            directionX = "left";
+                        }
+
+                        if (r.getY() >= height ){
+                            directionY = "down";
+                        }
+
+
+
+                        if (directionX.equals("right")) {
+                            r.setX(r.getX() + 1);
+                        }
+
+                        if(directionY.equals("up"))
+                        {
+                            r.setY(r.getY() + 1);
+                        }
+
+                        if (directionX.equals("left")) {
+                            r.setX(r.getX() - 1);
+                        }
+
+                        if (directionY.equals("down")) {
+                            r.setY(r.getY() - 1);
+                        }
+                })
+        );
+
+        time.playFromStart();
+
+
+
+//        time.stop();
 
         Group root = new Group(r, button);
         Scene scene = new Scene(root, width, height);
@@ -42,9 +83,9 @@ public class Dvd extends Application {
         stage.show();
 
     }
-
+    /*
     private void buttonPress(ActionEvent actionEvent) {
-        button.setVisible(false);
+        //button.setVisible(false);
         animation();
 
     }
@@ -75,6 +116,6 @@ public class Dvd extends Application {
                 r.setY(r.getY() - 1);
             }
         }
-    }
+    }*/
 
 }

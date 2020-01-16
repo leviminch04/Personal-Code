@@ -17,7 +17,7 @@ public class keyDetecter extends Application
     {
         final int[] circleX = {150};
         final int[] circleY = {150};
-        int move = 10;
+        final int[] move = {10};
         Button button = new Button("");
         //button.setVisible(false);
         button.setShape(new Circle(0));
@@ -30,28 +30,37 @@ public class keyDetecter extends Application
 
             @Override
             public void handle(KeyEvent event) {
+                if(event.getCode() == KeyCode.SHIFT)
+                {
+                    move[0] = 100;
+                }
+
+                if(event.getCode() != KeyCode.SHIFT)
+                {
+                    move[0] = 10;
+                }
 
                 if(event.getCode() == KeyCode.A)
                 {
-                    circleX[0] -= move;
+                    circleX[0] -= move[0];
                     circle.setCenterX(circleX[0]);
                 }
 
                 if(event.getCode() == KeyCode.D)
                 {
-                    circleX[0] += move;
+                    circleX[0] += move[0];
                     circle.setCenterX(circleX[0]);
                 }
 
                 if(event.getCode() == KeyCode.S)
                 {
-                    circleY[0] += move;
+                    circleY[0] += move[0];
                     circle.setCenterY(circleY[0]);
                 }
 
                 if(event.getCode() == KeyCode.W)
                 {
-                    circleY[0] -= move;
+                    circleY[0] -= move[0];
                     circle.setCenterY(circleY[0]);
                 }
             }
