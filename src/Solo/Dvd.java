@@ -19,7 +19,7 @@ public class Dvd extends Application {
         launch(args);
     }
     Rectangle r = new Rectangle();
-    int height = 600;
+    int height = 500;
     int width = 800;
     int rWidth2 = 80;
     int rHeight2 = 60;
@@ -47,7 +47,7 @@ public class Dvd extends Application {
         Timeline time = new Timeline();
         time.setCycleCount(Timeline.INDEFINITE);
         time.getKeyFrames().add(
-                new KeyFrame(Duration.seconds((double) 1 / 300), event -> {
+                new KeyFrame(Duration.seconds((double) 1 / 100), event -> {
                         if (r.getX() >= width - rWidth2){
                             directionX = "left";
                             red = (int) (Math.random()*256);
@@ -104,8 +104,6 @@ public class Dvd extends Application {
         );
 
         time.playFromStart();
-
-
 
 //        time.stop();
 
