@@ -18,6 +18,9 @@ public class keyDetecter extends Application
         final int[] circleX = {150};
         final int[] circleY = {150};
         final int[] move = {10};
+        int width = 300;
+        int height = 300;
+        int circleRadius = 10;
         Button button = new Button("");
         //button.setVisible(false);
         button.setShape(new Circle(0));
@@ -25,7 +28,7 @@ public class keyDetecter extends Application
         Circle circle = new Circle();
         circle.setCenterX(circleX[0]);
         circle.setCenterY(circleY[0]);
-        circle.setRadius(10);
+        circle.setRadius(circleRadius);
         button.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
             @Override
@@ -63,12 +66,25 @@ public class keyDetecter extends Application
                     circleY[0] -= move[0];
                     circle.setCenterY(circleY[0]);
                 }
+
+                if(circle.getCenterX() >= width)
+                {
+                    circle.setCenterX(0);
+                    System.out.println(circle.getCenterX());
+                }
+
+//                if(circle.getCenterX() <= 0)
+//                {
+//                    circle.setCenterX(width);
+//                }
+
+
             }
         });
 
 
         Group root = new Group(button, circle);
-        Scene scene = new Scene(root, 300, 300);
+        Scene scene = new Scene(root, width, height);
 
         stage.setTitle("Key Detecter");
         stage.setScene(scene);
