@@ -15,22 +15,22 @@ public class GameGenerator3
     int countChar = 0;
     int countWorld = 0;
     int countGoal = 0;
-    Reader readerGenre = new FileReader("C:\\Users\\Admin\\Documents\\Levi Minch\\Personal-Code\\src\\GameGenerator\\Events\\Genre.txt");
+    Reader readerGenre = new FileReader("C:\\Users\\levim\\Documents\\GitHub\\Personal-Code\\src\\GameGenerator\\Events\\Genre.txt");
     BufferedReader bufferedReaderGenre = new BufferedReader(readerGenre);
     String lineGenre = bufferedReaderGenre.readLine();
     List genre = new ArrayList();
 
-    Reader readerChar = new FileReader("C:\\Users\\Admin\\Documents\\Levi Minch\\Personal-Code\\src\\GameGenerator\\Events\\Character.txt");
+    Reader readerChar = new FileReader("C:\\Users\\levim\\Documents\\GitHub\\Personal-Code\\src\\GameGenerator\\Events\\Character.txt");
     BufferedReader bufferedReaderChar = new BufferedReader(readerChar);
     String lineChar = bufferedReaderChar.readLine();
     List charA = new ArrayList();
 
-    Reader readerWorld = new FileReader("C:\\Users\\Admin\\Documents\\Levi Minch\\Personal-Code\\src\\GameGenerator\\Events\\World.txt");
+    Reader readerWorld = new FileReader("C:\\Users\\levim\\Documents\\GitHub\\Personal-Code\\src\\GameGenerator\\Events\\World.txt");
     BufferedReader bufferedReaderWorld = new BufferedReader(readerWorld);
     String lineWorld = bufferedReaderWorld.readLine();
     List world = new ArrayList();
 
-    Reader readerGoal = new FileReader("C:\\Users\\Admin\\Documents\\Levi Minch\\Personal-Code\\src\\GameGenerator\\Events\\Goal.txt");
+    Reader readerGoal = new FileReader("C:\\Users\\levim\\Documents\\GitHub\\Personal-Code\\src\\GameGenerator\\Events\\Goal.txt");
     BufferedReader bufferedReaderGoal = new BufferedReader(readerGoal);
     String lineGoal = bufferedReaderGoal.readLine();
     List goal = new ArrayList();
