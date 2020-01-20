@@ -7,7 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Sphere;
 import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.util.Duration;
@@ -25,6 +27,10 @@ public class Dvd extends Application {
     int rHeight2 = 60;
     int rHeight = (int) (Math.random()*(height - rHeight2)+ 1);
     int rWidth = (int) (Math.random()*(width - rWidth2) + 1);
+    circleNew circleNew = new circleNew();
+    int x;
+    int y;
+    Circle circle = new Circle(10);
     String directionX = "right";
     String directionY = "up";
     int red;
@@ -47,7 +53,7 @@ public class Dvd extends Application {
         Timeline time = new Timeline();
         time.setCycleCount(Timeline.INDEFINITE);
         time.getKeyFrames().add(
-                new KeyFrame(Duration.seconds((double) 1 / 300), event -> {
+                new KeyFrame(Duration.seconds((double) 1 / 10000), event -> {
                         if (r.getX() >= width - rWidth2){
                             directionX = "left";
                             red = (int) (Math.random()*256);
@@ -100,7 +106,30 @@ public class Dvd extends Application {
                         if (directionY.equals("down")) {
                             r.setY(r.getY() - 1);
                         }
+
+                        if(true)
+                        {
+                            int x = (int) r.getX();
+                            int y = (int) r.getY();
+                            circle = circleNew.newCircle(x, y);
+                        }
                 })
+
+        );
+
+        Timeline dot = new Timeline();
+        dot.setCycleCount(Timeline.INDEFINITE);
+        dot.getKeyFrames().add(
+                new KeyFrame(Duration.seconds((double) 1 / 120), event -> {
+                    int x = (int) r.getX();
+                    int y = (int) r.getY();
+                    circle = circleNew.newCircle(x, y);
+
+
+
+
+                })
+
         );
 
         time.playFromStart();
@@ -109,7 +138,7 @@ public class Dvd extends Application {
 
 //        time.stop();
 
-        Group root = new Group(r);
+        Group root = new Group(r, circle);
         Scene scene = new Scene(root, width, height);
         stage.setScene(scene);
         stage.show();
