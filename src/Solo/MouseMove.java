@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -15,9 +16,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
 
+import java.awt.*;
 import java.sql.Time;
 
-public class keyDetecter extends Application
+public class MouseMove extends Application
 {
     public void start(Stage stage)
     {
@@ -45,37 +47,11 @@ public class keyDetecter extends Application
         enemy.setStroke(Color.RED);
         Group root = new Group(button, circle, enemy);
 
+        double mouseX = MouseInfo.getPointerInfo().getLocation().getX();
+        double mouseY = MouseInfo.getPointerInfo().getLocation().getY();
 
-        button.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
-            @Override
-            public void handle(KeyEvent event) {
-                if(event.getCode() == KeyCode.A)
-                {
-                    circleX[0] -= move[0];
-                    circle.setCenterX(circleX[0]);
-                    System.out.println("work");
-                }
 
-                if(event.getCode() == KeyCode.D)
-                {
-                    circleX[0] += move[0];
-                    circle.setCenterX(circleX[0]);
-                }
-
-                if(event.getCode() == KeyCode.S)
-                {
-                    circleY[0] += move[0];
-                    circle.setCenterY(circleY[0]);
-                }
-
-                if(event.getCode() == KeyCode.W)
-                {
-                    circleY[0] -= move[0];
-                    circle.setCenterY(circleY[0]);
-                }
-            }
-        });
         Timeline enemyMovement = new Timeline();
         enemyMovement.setCycleCount(Timeline.INDEFINITE);
         enemyMovement.getKeyFrames().add(
@@ -106,19 +82,49 @@ public class keyDetecter extends Application
                         //wtf did i just do?
                         root.getChildren().remove(circle);
                     }
-//                    System.exit(-1);
+                    //System.exit(-1);
 
 
                 })
 
-        );
+        ); enemyMovement.playFromStart();
 
-        enemyMovement.playFromStart();
+        Timeline mouseMove = new Timeline();
+        mouseMove.setCycleCount(Timeline.INDEFINITE);
+        mouseMove.getKeyFrames().add(
+                new KeyFrame(Duration.seconds((double) 1 / 120), event ->
+                {
+                    if(MouseInfo.getPointerInfo().getLocation().getX() > circle.getCenterX())
+                    {
+                        circle.setCenterX(circle.getCenterX() + ENEMYMOVE);
+                        System.out.println("gay x");
+                    }
 
+                    if(MouseInfo.getPointerInfo().getLocation().getX() < circle.getCenterX())
+                    {
+                        circle.setCenterX(circle.getCenterX() - ENEMYMOVE);
+                        System.out.println("gay -x");
+                    }
 
+                    if(MouseInfo.getPointerInfo().getLocation().getY() > circle.getCenterY())
+                    {
+                        circle.setCenterY(circle.getCenterY() + ENEMYMOVE);
+                        System.out.println("gay y");
+                    }
 
-        Scene scene = new Scene(root, width, height);
+                    if(MouseInfo.getPointerInfo().getLocation().getY() < circle.getCenterY())
+                    {
+                        circle.setCenterY(circle.getCenterY() - ENEMYMOVE);
+                        System.out.println("gay -y");
+                    }
 
+                })
+
+        ); mouseMove.playFromStart();
+
+        Scene scene = new Scene(root);
+
+        stage.setFullScreen(true);
         stage.setTitle("Key Detecter");
         stage.setScene(scene);
         stage.show();

@@ -27,10 +27,10 @@ public class Dvd extends Application {
     int rHeight2 = 60;
     int rHeight = (int) (Math.random()*(height - rHeight2)+ 1);
     int rWidth = (int) (Math.random()*(width - rWidth2) + 1);
-    circleNew circleNew = new circleNew();
     int x;
     int y;
-    Circle circle = new Circle(10);
+    int num = 0;
+    Circle[] circle = new Circle[0];
     String directionX = "right";
     String directionY = "up";
     int red;
@@ -49,11 +49,12 @@ public class Dvd extends Application {
         blue = (int) (Math.random()*256);
         r.setFill(Color.rgb(red, green, blue));
         r.setStroke(Color.rgb(red, green, blue));
+        Group root = new Group(r);
 
         Timeline time = new Timeline();
         time.setCycleCount(Timeline.INDEFINITE);
         time.getKeyFrames().add(
-                new KeyFrame(Duration.seconds((double) 1 / 10000), event -> {
+                new KeyFrame(Duration.seconds((double) 1 / 200), event -> {
                         if (r.getX() >= width - rWidth2){
                             directionX = "left";
                             red = (int) (Math.random()*256);
@@ -107,38 +108,23 @@ public class Dvd extends Application {
                             r.setY(r.getY() - 1);
                         }
 
-                        if(true)
-                        {
-                            int x = (int) r.getX();
-                            int y = (int) r.getY();
-                            circle = circleNew.newCircle(x, y);
-                        }
-                })
-
-        );
-
-        Timeline dot = new Timeline();
-        dot.setCycleCount(Timeline.INDEFINITE);
-        dot.getKeyFrames().add(
-                new KeyFrame(Duration.seconds((double) 1 / 120), event -> {
                     int x = (int) r.getX();
                     int y = (int) r.getY();
-                    circle = circleNew.newCircle(x, y);
-
-
-
+                    circle = new Circle[num];
+                    circle[num].setRadius(5);
+                    circle[num].setCenterX(x);
+                    circle[num].setCenterY(y);
+                    circle[num].setFill(Color.BLACK);
+                    root.getChildren().add(circle[num]);
+                    num++;
 
                 })
 
-        );
-
-        time.playFromStart();
+        ); time.playFromStart();
 
 
 
 //        time.stop();
-
-        Group root = new Group(r, circle);
         Scene scene = new Scene(root, width, height);
         stage.setScene(scene);
         stage.show();
