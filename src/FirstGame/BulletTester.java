@@ -16,6 +16,12 @@ public class BulletTester extends Application
     public void start(Stage stage)
     {
         Group root = new Group();
+        stage.setFullScreen(true);
+
+        Scene scene = new Scene(root);
+
+        stage.setTitle("Key Detecter");
+        int move = 10;
 
 //        double mouseX = MouseInfo.getPointerInfo().getLocation().getX();
 //        double mouseY = MouseInfo.getPointerInfo().getLocation().getY();
@@ -25,15 +31,16 @@ public class BulletTester extends Application
         run.getKeyFrames().add(
                 new KeyFrame(Duration.seconds((double) 1 / 60), event ->
                 {
+
                     Bullet bullet = new Bullet(MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
                     root.getChildren().add(bullet);
+
+
                 })
         );run.playFromStart();
 
-        Scene scene = new Scene(root);
 
-        stage.setFullScreen(true);
-        stage.setTitle("Key Detecter");
+
         stage.setScene(scene);
         stage.show();
     }
