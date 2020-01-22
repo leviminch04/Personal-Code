@@ -79,14 +79,9 @@ public class MouseMove extends Application
                     if(circle.getCenterX() == enemy.getCenterX() && circle.getCenterY() == enemy.getCenterY())
                     {
                         System.out.println("collide");
-                        //wtf did i just do?
-                        root.getChildren().remove(circle);
+                        System.exit(-1);
                     }
-                    //System.exit(-1);
-
-
                 })
-
         ); enemyMovement.playFromStart();
 
         Timeline mouseMove = new Timeline();
@@ -125,7 +120,7 @@ public class MouseMove extends Application
         Scene scene = new Scene(root);
 
         stage.setFullScreen(true);
-        stage.setTitle("Key Detecter");
+        stage.setTitle("Key Man");
         stage.setScene(scene);
         stage.show();
     }
