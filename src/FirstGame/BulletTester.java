@@ -16,18 +16,17 @@ public class BulletTester extends Application
     public void start(Stage stage)
     {
         Group root = new Group();
-        Bullet bullet = new Bullet(MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY(), 20);
-        Circle circle = bullet.shoot();
-        root.getChildren().add(circle);
-        double mouseX = MouseInfo.getPointerInfo().getLocation().getX();
-        double mouseY = MouseInfo.getPointerInfo().getLocation().getY();
+
+//        double mouseX = MouseInfo.getPointerInfo().getLocation().getX();
+//        double mouseY = MouseInfo.getPointerInfo().getLocation().getY();
 
         Timeline run = new Timeline();
         run.setCycleCount(Timeline.INDEFINITE);
         run.getKeyFrames().add(
                 new KeyFrame(Duration.seconds((double) 1 / 60), event ->
                 {
-                    bullet.end(MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
+                    Bullet bullet = new Bullet(MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
+                    root.getChildren().add(bullet);
                 })
         );run.playFromStart();
 

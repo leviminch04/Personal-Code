@@ -1,4 +1,4 @@
-package Solo;
+package FirstGame;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -54,7 +54,7 @@ public class Dvd extends Application {
         Timeline time = new Timeline();
         time.setCycleCount(Timeline.INDEFINITE);
         time.getKeyFrames().add(
-                new KeyFrame(Duration.seconds((double) 1 / 200), event -> {
+                new KeyFrame(Duration.seconds((double) 1 / 1000), event -> {
                         if (r.getX() >= width - rWidth2){
                             directionX = "left";
                             red = (int) (Math.random()*256);
@@ -108,15 +108,8 @@ public class Dvd extends Application {
                             r.setY(r.getY() - 1);
                         }
 
-                    int x = (int) r.getX();
-                    int y = (int) r.getY();
-                    circle = new Circle[num];
-                    circle[num].setRadius(5);
-                    circle[num].setCenterX(x);
-                    circle[num].setCenterY(y);
-                    circle[num].setFill(Color.BLACK);
-                    root.getChildren().add(circle[num]);
-                    num++;
+                        Bullet bullet = new Bullet(r.getX(), r.getY());
+                        root.getChildren().add(bullet);
 
                 })
 
