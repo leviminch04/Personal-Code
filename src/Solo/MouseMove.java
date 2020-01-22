@@ -79,12 +79,8 @@ public class MouseMove extends Application
                     if(circle.getCenterX() == enemy.getCenterX() && circle.getCenterY() == enemy.getCenterY())
                     {
                         System.out.println("collide");
-                        //wtf did i just do?
-                        root.getChildren().remove(circle);
+                        System.exit(-1);
                     }
-                    //System.exit(-1);
-
-
                 })
 
         ); enemyMovement.playFromStart();
