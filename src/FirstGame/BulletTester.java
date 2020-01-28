@@ -13,6 +13,7 @@ import java.awt.*;
 
 public class BulletTester extends Application
 {
+    int total = 0;
     public void start(Stage stage)
     {
         Group root = new Group();
@@ -34,6 +35,12 @@ public class BulletTester extends Application
 
                     Bullet bullet = new Bullet(MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
                     root.getChildren().add(bullet);
+                    total++;
+
+                    for(int num = 0; num >= total; num++)
+                    {
+                        System.out.println(root.getChildren().get(num));
+                    }
 
 
                 })

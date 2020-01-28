@@ -19,6 +19,14 @@ public class Bullet extends Circle
         this.setStroke(Color.BLUE);
     }
 
+    public Circle increase(Circle circle)
+    {
+        circle.setCenterX(circle.getCenterX() + 5);
+        circle.setCenterY(circle.getCenterY() + 5);
+        return circle;
+    }
+
+
 
 
 
