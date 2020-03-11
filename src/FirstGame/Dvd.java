@@ -108,8 +108,8 @@ public class Dvd extends Application {
                             r.setY(r.getY() - 1);
                         }
 
-                        Bullet bullet = new Bullet(r.getX(), r.getY());
-                        root.getChildren().add(bullet);
+//                        Bullet bullet = new Bullet(r.getX(), r.getY());
+//                        root.getChildren().add(bullet);
 
                 })
 
