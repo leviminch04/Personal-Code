@@ -18,8 +18,13 @@ public class Bullet extends Circle
     private double hyp;
     private double moveX;
     private double moveY;
-    public Bullet(double locX, double locY, double mouseX, double mouseY)
+    //    private double locX;
+//    private double locY;
+
+    public Bullet(double locX, double locY)
     {
+//        this.locX = locX;
+//        this.locY = locY;
         this.setCenterX(locX);
         this.setCenterY(locY);
         this.setRadius(radius);
@@ -34,8 +39,6 @@ public class Bullet extends Circle
         moveX = (Math.cos(angle) * move);
         moveY = (Math.sin(angle) * move);
     }
-
-
 
     public void goodMove()
     {
@@ -59,28 +62,21 @@ public class Bullet extends Circle
         }
     }
 
-    public void move()
-    {
-        if(mouseX > this.getCenterX())
-        {
+    public void move() {
+        if (mouseX > this.getCenterX()) {
             this.setCenterX(this.getCenterX() + move);
         }
-        if(mouseX< this.getCenterX())
-        {
+        if (mouseX < this.getCenterX()) {
             this.setCenterX(this.getCenterX() - move);
         }
 
-        if(mouseY > this.getCenterY())
-        {
+        if (mouseY > this.getCenterY()) {
             this.setCenterY(this.getCenterY() + move);
         }
 
-        if(mouseY < this.getCenterY())
-        {
+        if (mouseY < this.getCenterY()) {
             this.setCenterY(this.getCenterY() - move);
         }
     }
-
-
 
 }
