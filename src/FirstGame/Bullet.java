@@ -16,13 +16,13 @@ public class Bullet extends Circle
     private double yDist;
     private double angle;
     private double hyp;
-    //    private double locX;
-//    private double locY;
+    private double locX;
+    private double locY;
 
     public Bullet(double locX, double locY, double mouseX, double mouseY)
     {
-//        this.locX = locX;
-//        this.locY = locY;
+        this.locX = locX;
+        this.locY = locY;
         this.setCenterX(locX);
         this.setCenterY(locY);
         this.setRadius(radius);
