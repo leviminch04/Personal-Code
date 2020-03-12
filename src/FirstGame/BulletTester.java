@@ -40,7 +40,7 @@ public class BulletTester extends Application
         thing.getKeyFrames().add(
                 new KeyFrame(Duration.seconds((double) 1 / 5), event ->
                 {
-                    Bullet bullet = new Bullet(1,1, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
+                    Bullet bullet = new Bullet(100,100, MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY());
                     root.getChildren().add(bullet);
                     bulletList.add(bullet);
                 })

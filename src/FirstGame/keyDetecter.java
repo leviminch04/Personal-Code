@@ -24,7 +24,7 @@ public class keyDetecter extends Application
         int width = 300;
         int height = 300;
         int circleRadius = 20;
-        final int ENEMYMOVE = 1;
+        final double ENEMYMOVE = 1;
         Button button = new Button("");
         //button.setVisible(false);
         button.setShape(new Circle(0));
