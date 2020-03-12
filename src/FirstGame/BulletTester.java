@@ -49,7 +49,7 @@ public class BulletTester extends Application
         Scene scene = new Scene(root);
 
         stage.setFullScreen(true);
-        stage.setTitle("Key Detecter");
+        stage.setTitle("Bullet Tester");
         stage.setScene(scene);
         stage.show();
     }

@@ -16,12 +16,10 @@ public class Bullet extends Circle
     private double yDist;
     private double angle;
     private double hyp;
-    private double moveX;
-    private double moveY;
     //    private double locX;
 //    private double locY;
 
-    public Bullet(double locX, double locY)
+    public Bullet(double locX, double locY, double mouseX, double mouseY)
     {
 //        this.locX = locX;
 //        this.locY = locY;
@@ -33,50 +31,14 @@ public class Bullet extends Circle
         yDist = locY - mouseY;
         this.mouseX = mouseX;
         this.mouseY = mouseY;
-        slope = ((mouseY) / (mouseX));
         hyp = Math.sqrt((xDist * xDist) + (yDist * yDist));
-        angle = yDist / hyp;
-        moveX = (Math.cos(angle) * move);
-        moveY = (Math.sin(angle) * move);
+        angle = Math.atan2(yDist, xDist);
+
     }
 
     public void goodMove()
     {
-        if(mouseX > this.getCenterX())
-        {
-            this.setCenterX(this.getCenterX() + moveX);
-        }
-        if(mouseX< this.getCenterX())
-        {
-            this.setCenterX(this.getCenterX() - moveX);
-        }
-
-        if(mouseY > this.getCenterY())
-        {
-            this.setCenterY(this.getCenterY() + moveY);
-        }
-
-        if(mouseY < this.getCenterY())
-        {
-            this.setCenterY(this.getCenterY() - moveY);
-        }
+        this.setCenterX(this.getCenterX() + (move * Math.cos(angle)));
+        this.setCenterY(this.getCenterY() + (move * Math.sin(angle)));
     }
-
-    public void move() {
-        if (mouseX > this.getCenterX()) {
-            this.setCenterX(this.getCenterX() + move);
-        }
-        if (mouseX < this.getCenterX()) {
-            this.setCenterX(this.getCenterX() - move);
-        }
-
-        if (mouseY > this.getCenterY()) {
-            this.setCenterY(this.getCenterY() + move);
-        }
-
-        if (mouseY < this.getCenterY()) {
-            this.setCenterY(this.getCenterY() - move);
-        }
-    }
-
 }
