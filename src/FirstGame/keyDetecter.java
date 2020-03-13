@@ -34,7 +34,7 @@ public class keyDetecter extends Application
         circle.setCenterY(circleY[0]);
         circle.setRadius(circleRadius);
         circle.setStroke(Color.BLUE);
-        Circle enemy = new Circle();
+        Move enemy = new Move();
         enemy.setCenterX((double) (Math.random() * width));
         enemy.setCenterY((double) (Math.random() * height));
         enemy.setRadius(circleRadius);
@@ -51,7 +51,6 @@ public class keyDetecter extends Application
                 {
                     circleX[0] -= move[0];
                     circle.setCenterX(circleX[0]);
-                    System.out.println("work");
                 }
 
                 if(event.getCode() == KeyCode.D)
@@ -77,35 +76,7 @@ public class keyDetecter extends Application
         enemyMovement.setCycleCount(Timeline.INDEFINITE);
         enemyMovement.getKeyFrames().add(
                 new KeyFrame(Duration.seconds((double) 1 / 60), event -> {
-                    if(circle.getCenterX() > enemy.getCenterX()){
-                        enemy.setCenterX((int) (enemy.getCenterX()) + ENEMYMOVE);
-                        //System.out.println("enemy + x");
-                    }
-
-                    if(circle.getCenterX() < enemy.getCenterX()){
-                        enemy.setCenterX( (int) (enemy.getCenterX()) - ENEMYMOVE);
-                        //System.out.println("enemy - x");
-                    }
-
-                    if(circle.getCenterY() > enemy.getCenterY()){
-                        enemy.setCenterY((int) (enemy.getCenterY()) + ENEMYMOVE);
-                        //System.out.println("enemy + y");
-                    }
-
-                    if(circle.getCenterY() < enemy.getCenterY()){
-                        enemy.setCenterY( (int) (enemy.getCenterY()) - ENEMYMOVE);
-                        //System.out.println("enemy - Y");
-                    }
-
-                    if(circle.getCenterX() == enemy.getCenterX() && circle.getCenterY() == enemy.getCenterY())
-                    {
-                        System.out.println("collide");
-                        //wtf did i just do?
-                        root.getChildren().remove(circle);
-                    }
-//                    System.exit(-1);
-
-
+                    enemy.move(enemy.getCenterX(), enemy.getCenterY(), circle.getCenterX(), circle.getCenterY(), .5);
                 })
 
         );

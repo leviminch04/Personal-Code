@@ -32,6 +32,14 @@ public class Bullet extends Circle
         angle = Math.atan2(yDist, xDist);
     }
 
+    public double getLocX() {
+        return locX;
+    }
+
+    public double getLocY() {
+        return locY;
+    }
+
     public void goodMove()
     {
         this.setCenterX(this.getCenterX() + ( -1 * move * Math.cos(angle)));

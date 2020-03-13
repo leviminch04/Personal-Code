@@ -16,8 +16,8 @@ public class Move extends Circle {
         distY = startY - endY;
         angle = Math.atan2(distY, distX);
         if(this.getCenterX() != endX)
-            this.setCenterX(this.getCenterX() + (-1 * speed * Math.cos(angle)));
+            this.setCenterX(this.getCenterX() + (1 * speed * Math.cos(angle + 180)));
         if(this.getCenterY() != endY)
-            this.setCenterY(this.getCenterY() + (-1 * speed * Math.sin(angle)));
+            this.setCenterY(this.getCenterY() + (1 * speed * Math.sin(angle + 180)));
     }
 }

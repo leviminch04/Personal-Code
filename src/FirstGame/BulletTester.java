@@ -31,6 +31,12 @@ public class BulletTester extends Application
                     for (int i = 0; i < root.getChildren().size(); i++) {
 
                         bulletList.get(i).goodMove();
+                        if (bulletList.get(i).getCenterX() > (bulletList.get(i).getLocX() + 50) || bulletList.get(i).getCenterX() < (bulletList.get(i).getLocX() - 50))
+                        {
+                            root.getChildren().remove(bulletList.get(i));
+                            bulletList.remove(i);
+                            i++;
+                        }
                     }
                 })
         );run.playFromStart();

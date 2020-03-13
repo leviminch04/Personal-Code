@@ -1,5 +1,6 @@
 package FirstGame;
 
+import java.awt.event.MouseListener;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -58,6 +59,7 @@ public class keyDetecterCopy extends Application
                 }
             }
         });
+
         Timeline enemyMovement = new Timeline();
         enemyMovement.setCycleCount(Timeline.INDEFINITE);
         enemyMovement.getKeyFrames().add(
